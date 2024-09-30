@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "742700902793",
+    "project_id": "fir-tutorial-be3d8",
+    "storage_bucket": "fir-tutorial-be3d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742700902793:android:00443019e841a93c26d958",
+        "android_client_info": {
+          "package_name": "com.example.flutter_learning"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEsdPBOoiaY7Pr6-d2LHvyb30N3XzqH88"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
