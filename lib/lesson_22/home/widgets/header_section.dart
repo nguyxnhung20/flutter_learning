@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/lesson_22/home/widgets/option_item.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HeaderSection extends StatelessWidget {
   const HeaderSection({
@@ -8,7 +9,6 @@ class HeaderSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //! viewPadding.top: lấy ra kích thước Height của Status Bar
     final statusBarHeight = MediaQuery.of(context).viewPadding.top;
     print("height của status bar là: $statusBarHeight");
     return Container(
@@ -26,20 +26,25 @@ class HeaderSection extends StatelessWidget {
           const SizedBox(
             width: 16,
           ),
-          const Expanded(
+          Expanded(
             child: Row(
               children: [
-                OptionItem(
+                const OptionItem(
                     iconPath: "assets/images/location_ic.png",
                     title: "Hồ Chí Minh"),
-                OptionItem(
+                const OptionItem(
                     iconPath: "assets/images/language_ic.png",
                     title: "Tiếng Việt"),
-                SizedBox(
+                const SizedBox(
                   width: 8,
                 ),
-                Spacer(),
-                IconButton(onPressed: null, icon: Icon(Icons.logout))
+                const Spacer(),
+                IconButton(
+                  onPressed: () async {
+                    await FirebaseAuth.instance.signOut();
+                  },
+                  icon: const Icon(Icons.logout),
+                )
               ],
             ),
           )

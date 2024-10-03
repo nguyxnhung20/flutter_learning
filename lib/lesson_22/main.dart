@@ -5,9 +5,10 @@ import 'package:flutter_learning/lesson_19/navigator_demo/screens/not_found_page
 import 'package:flutter_learning/lesson_22/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_learning/lesson_22/home/home_screen.dart';
 import 'package:flutter_learning/lesson_22/login/login_screen.dart';
+import 'package:flutter_learning/lesson_22/root_page.dart';
 import 'package:flutter_learning/lesson_22/theme/my_theme.dart';
 
-Future<void> main(List<String> args) async {
+void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
             return MaterialPageRoute(builder: (_) => const NotFoundPage());
         }
       },
-      initialRoute: '/',
+      home: const RootPage(),
     );
   }
 }

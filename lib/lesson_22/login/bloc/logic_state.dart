@@ -21,5 +21,6 @@ class SuccessfullyLoginState extends LoginState {
   final String? successfulMsg;
   SuccessfullyLoginState({
     this.successfulMsg,
+    required String successMsg,
   });
 }
