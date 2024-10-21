@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/logic_holders/bloc/account_info_bloc.dart';
 
 class AvatarAndUsernameSection extends StatelessWidget {
   const AvatarAndUsernameSection({
@@ -7,20 +9,29 @@ class AvatarAndUsernameSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        Icon(
+        const Icon(
           Icons.person,
           size: 100,
           color: Colors.white,
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
-        Text(
-          "Người dùng mới",
-          style: TextStyle(color: Colors.white, fontSize: 26),
-        )
+        BlocSelector<AccountInfoBloc, AccountInfoState, String?>(
+          selector: (state) {
+            final fullNameFromFirestore =
+                state.accountDataFromFirestore?.fullName;
+            return fullNameFromFirestore;
+          },
+          builder: (context, value) {
+            return Text(
+              value ?? "Người dùng mới",
+              style: const TextStyle(color: Colors.white, fontSize: 26),
+            );
+          },
+        ),
       ],
     );
   }
