@@ -9,6 +9,8 @@ import 'package:flutter_learning/lesson_30_firestore/features/profile/presentati
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/settings_content.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/widgets/custom_title_and_content_section.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/widgets/information_content.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -33,7 +35,13 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   actions: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          await GoogleSignIn().signOut();
+                          await FirebaseAuth.instance.signOut();
+                          if (context.mounted) {
+                            Navigator.of(context).pushReplacementNamed('/');
+                          }
+                        },
                         icon: const Icon(
                           Icons.logout,
                           color: Colors.white,
